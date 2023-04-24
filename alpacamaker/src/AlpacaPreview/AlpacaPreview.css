@@ -1,5 +1,11 @@
 #preview-container {
 	width: 100%;
+	position: relative;
+}
+
+#preview-container img:nth-child(n+2) {
+	position: absolute;
+	left: 0px;
 }
 
 #preview-container img {

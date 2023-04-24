@@ -1,0 +1,23 @@
+.buttons ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.buttons li:hover {
+	color: darkcyan;
+	border-color: darkcyan;
+}
+
+.buttons {
+	max-width: 275px;
+}
+.customize-button {
+	list-style-type: none;
+	border: solid lightblue 2px;
+	padding: 10px;
+	margin: 2px;
+	display: inline;
+	cursor:pointer;
+	border-radius: 17px;
+	color: lightblue;
+}

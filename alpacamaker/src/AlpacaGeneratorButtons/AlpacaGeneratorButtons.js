@@ -1,23 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from './AlpacaGeneratorButtons.css'
 
 function AlpacaGeneratorButtons(props) {
 
-	
-
+	const updateOptions = props.fnUpdateOptions;
+	const [selectedOptions, setSelectedOptions] = useState(props.selectedOptions);
 	const [curOptions, setCurOptions] = useState('hair');
-	const [selectedOptions, setSelectedOptions] = useState({
-		neck: 'default',
-		mouth: 'default',
-		leg: 'default',
-		hair: 'default',
-		eyes: 'default',
-		ears: 'default',
-		background: 'blue50',
-		accessory: 'default'
-	})
-
 	const categories = ['Hair', 'Ears', 'Eyes', 'Mouth', 'Neck', 'Leg', 'Accessories', 'Background'];
 	const selectedButtonClass = 'selected-button';
 
@@ -28,6 +17,14 @@ function AlpacaGeneratorButtons(props) {
 			default: 
 				return name.toLowerCase();
 		}
+	}
+
+	const setSelectedChoice = (choice) => {
+		//important to use the spread operator here to ensure a new object 
+		let newOptions = {...selectedOptions};
+		newOptions[curOptions] = choice;
+		setSelectedOptions(newOptions);
+		updateOptions(newOptions);
 	}
 	
 
@@ -61,6 +58,7 @@ function AlpacaGeneratorButtons(props) {
                 className={`customize-button ${
                   selectedOptions[curOptions] === e ? selectedButtonClass : ""
                 }`}
+				onClick={() => setSelectedChoice(e)}
               >
                 {e}
               </li>

@@ -6,8 +6,8 @@ html {
 	display: flex;
 	flex-direction: column;
 	color: rgb(0, 13, 45);
-	margin-left: 100px;
-	margin-right: 100px;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 
 #generator-container {

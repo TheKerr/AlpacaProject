@@ -1,6 +1,7 @@
 .buttons ul {
 	display: flex;
 	flex-wrap: wrap;
+	padding: 0px 2px;
 }
 
 .buttons li:hover {
@@ -9,15 +10,23 @@
 }
 
 .buttons {
-	max-width: 275px;
+	max-width: 45%;
 }
 .customize-button {
 	list-style-type: none;
 	border: solid lightblue 2px;
-	padding: 10px;
+	padding: 5px 10px;
 	margin: 2px;
 	display: inline;
-	cursor:pointer;
-	border-radius: 17px;
+	cursor: pointer;
+	border-radius: 16px;
 	color: lightblue;
+	flex-grow: 1;
+	text-align: center;
+}
+
+.selected-button {
+	background-color: darkcyan;
+	border-color: darkcyan;
+	color: white;
 }

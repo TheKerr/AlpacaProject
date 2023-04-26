@@ -35,7 +35,7 @@ function AlpacaGeneratorButtons(props) {
         <div className="buttons">
           <ul>
             {categories.map((e) => (
-              <li
+              <li key={e}
                 className={`customize-button ${
                   curOptions === categoryNameToOptions(e)
                     ? selectedButtonClass
@@ -54,7 +54,7 @@ function AlpacaGeneratorButtons(props) {
         <div className="buttons">
           <ul>
             {props.options[curOptions].map((e) => (
-              <li
+              <li key={e}
                 className={`customize-button ${
                   selectedOptions[curOptions] === e ? selectedButtonClass : ""
                 }`}

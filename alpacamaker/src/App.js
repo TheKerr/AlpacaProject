@@ -3,6 +3,7 @@ import './App.css';
 import AlpacaPreview from './AlpacaPreview/AlpacaPreview';
 import AlpacaGeneratorButtons from './AlpacaGeneratorButtons/AlpacaGeneratorButtons';
 import { useState } from "react";
+import html2canvas from "html2canvas";
 
 function App() {
 
@@ -32,6 +33,36 @@ function App() {
 		setSelectedOptions(options);
 	}
 
+	const getRandomIndex = (arr) => {
+		const randInt = Math.floor(Math.random() * arr.length);
+		return randInt
+	}
+	const getRandomArrayValue = (arr) => {
+		return arr[getRandomIndex(arr)];
+	}
+
+	const randomizeOptions = () => {
+		let newOptions = {...options};
+		newOptions.neck = getRandomArrayValue(options.neck);
+		newOptions.mouth = getRandomArrayValue(options.mouth);
+		newOptions.leg = getRandomArrayValue(options.leg);
+		newOptions.hair = getRandomArrayValue(options.hair);
+		newOptions.eyes = getRandomArrayValue(options.eyes);
+		newOptions.ears = getRandomArrayValue(options.ears);
+		newOptions.background = getRandomArrayValue(options.background);
+		newOptions.accessory = getRandomArrayValue(options.accessory);
+		updateOptions(newOptions);
+	}
+
+	const downloadImage = () => {
+		html2canvas(document.getElementById('preview-container')).then(canvas => {
+			let a = document.createElement("a");
+			a.download = "llama.png";
+			a.href = canvas.toDataURL("image/png");
+			a.click(); 
+		})
+	}
+
   return (
     <div className="App">
       <header className="App-header">
@@ -41,8 +72,8 @@ function App() {
 		<AlpacaPreview options={options} selectedOptions={selectedOptions}/>
 		<AlpacaGeneratorButtons options={options} selectedOptions={selectedOptions} fnUpdateOptions={updateOptions.bind(this)} />
 		<div id="extra-buttons">
-			<div className="extra-button" id="randomize-button">🔀 Randomize</div>
-			<div className="extra-button" id="download-button">🖼 Download</div>
+			<div className="extra-button" id="randomize-button" onClick={() => randomizeOptions()}>🔀 Randomize</div>
+			<div className="extra-button" id="download-button" onClick={() => downloadImage()}>🖼 Download</div>
 		</div>
 	  </div>
     </div>

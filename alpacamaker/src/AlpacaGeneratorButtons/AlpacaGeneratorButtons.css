@@ -30,3 +30,7 @@
 	border-color: darkcyan;
 	color: white;
 }
+
+li.selected-button:hover {
+	color: white;
+}
